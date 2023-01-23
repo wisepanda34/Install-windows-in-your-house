@@ -1,13 +1,19 @@
 // import './slider';
 // import { moduls } from './modules/modals.js';
+// import { tabs } from './modules/tabs.js';
+// import { forms } from './modules/forms.js';
 
-"use strict";
-console.log('1');
 
 window.addEventListener('DOMContentLoaded', () => {
+	"use strict";
+
 
 	moduls();
 	tabs('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
+	tabs('.decoration_slider', '.no_click', '.decoration_content >div>div', 'after-click');
+	tabs('.balcon_icons', '.balcon_icons_img', '.big_img > img', 'do_image_more', 'inline-block');
+
+	form();
 
 
 
