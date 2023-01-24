@@ -37,6 +37,8 @@ const timer = (id, deadline) => {
 		const seconds = timer.querySelector("#seconds");
 		timeInterval = setInterval(updateClock, 1000);
 
+		updateClock();
+
 		//передаем в коллекции значение временных параметров
 		function updateClock() {
 			const t = getTimeRemaining(endtime);
