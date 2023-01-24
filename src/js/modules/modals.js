@@ -1,4 +1,4 @@
-const moduls = () => {
+const modals = () => {
 
 	function bindModal(triggerSelector, modalSelector, closeSelector, closeClickOverlay = true) {
 

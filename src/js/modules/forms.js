@@ -1,4 +1,4 @@
-const form = () => {
+const form = (state) => {
 
 	const forms = document.querySelectorAll('form');
 	const inputs = document.querySelectorAll('input');
@@ -13,6 +13,8 @@ const form = () => {
 		failure: 'Some mistake happened...'
 	};
 
+
+	//описание функции POST-запроса
 	const postData = async (url, data) => {
 		document.querySelector('.status').textContent = message.loading;
 		let res = await fetch(url, {
@@ -36,7 +38,13 @@ const form = () => {
 			item.appendChild(statusMessage);
 
 			const formData = new FormData(item);
+			if (item.getAttribute('data-calc') === 'end') {
+				for (let key in state) {
+					formData.append(key, state[key]);
+				}
+			}
 
+			//POST-запрос на сервер, отправка данных, которые собраны в объекте modalState
 			postData('assets/server.php', formData)
 				.then(res => {
 					console.log(res);
@@ -44,9 +52,11 @@ const form = () => {
 				})
 				.catch(() => statusMessage.textContent = message.failure)
 				.finally(() => {
-					clearInputs();
+
 					setTimeout(() => {
+						clearInputs();
 						statusMessage.remove();
+
 					}, 5000);
 				});
 		});
