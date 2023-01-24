@@ -2,14 +2,10 @@ const form = () => {
 
 	const forms = document.querySelectorAll('form');
 	const inputs = document.querySelectorAll('input');
-	const phoneInputs = document.querySelectorAll('input[name="user_phone"]');
 
-	//удаление нечисел в телефоновых полях 
-	phoneInputs.forEach(item => {
-		item.addEventListener('input', () => {
-			item.value = item.value.replace(/\D/, '');
-		});
-	});
+	//вызов универсальной функции для отсеивания нечисел
+	checkNumInputs('input[name="user_phone"]');
+
 
 	const message = {
 		loading: 'Download...',
